@@ -1,6 +1,7 @@
 import 'package:app/widgets/button_widget.dart';
 import 'package:app/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddTask extends StatelessWidget {
   const AddTask({super.key});
@@ -23,7 +24,9 @@ class AddTask extends StatelessWidget {
         Column(
           children: [
             const SizedBox(height: 60),
-            IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back, color: Colors.indigo.shade900,))
+            IconButton(onPressed: (){
+              Get.back();
+            }, icon: Icon(Icons.arrow_back, color: Colors.indigo.shade900,))
           ],
         ),
         Column(

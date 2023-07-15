@@ -1,6 +1,7 @@
 import 'package:app/widgets/button_widget.dart';
 import 'package:app/widgets/task_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AllTask extends StatelessWidget {
   const AllTask({super.key});
@@ -28,9 +29,11 @@ class AllTask extends StatelessWidget {
       body: Column(
         children: [
         Container(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 60),
+          padding: const EdgeInsets.only(left: 10, right: 20, top: 60),
           alignment: Alignment.topLeft,
-          child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back, color: Colors.indigo.shade900,)),
+          child: IconButton(onPressed: (){
+            Get.back();
+          }, icon: Icon(Icons.arrow_back, color: Colors.indigo.shade900,)),
         ),
         SizedBox(height: MediaQuery.of(context).size.height/5,),
         Container(
@@ -83,7 +86,7 @@ class AllTask extends StatelessWidget {
                 });
                 return false;
               }else{
-                return Future.delayed(Duration(seconds: 1), ()=>direction==DismissDirection.endToStart);
+                return Future.delayed(const Duration(seconds: 1), ()=>direction==DismissDirection.endToStart);
               }
             },
             key: ObjectKey(index),
