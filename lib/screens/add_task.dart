@@ -15,7 +15,7 @@ class AddTask extends StatelessWidget {
       height: double.maxFinite,
       width: double.maxFinite,
       padding: const EdgeInsets.only(left: 10, right: 20),
-      decoration: BoxDecoration(color: Colors.yellow.shade200),
+      decoration: BoxDecoration(color: Colors.yellow.shade300),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

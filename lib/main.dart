@@ -1,5 +1,5 @@
-import 'package:app/screens/add_task.dart';
-// import 'package:app/screens/home_screen.dart';
+import 'package:app/screens/all_task.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'To-Do App',
       theme: ThemeData(
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AddTask(),
+      home: const AllTask(),
     );
   }
 }
