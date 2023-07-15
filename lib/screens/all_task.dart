@@ -35,7 +35,7 @@ class AllTask extends StatelessWidget {
             Get.back();
           }, icon: Icon(Icons.arrow_back, color: Colors.indigo.shade900,)),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height/5,),
+        SizedBox(height: MediaQuery.of(context).size.height/7,),
         Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Row(children: [
@@ -79,7 +79,7 @@ class AllTask extends StatelessWidget {
                       children: [
                         ButtonWidget(bgcolor: Colors.black, text: "View Details", textColor: Colors.white),
                         SizedBox(height: 20,),
-                        ButtonWidget(bgcolor: Colors.black, text: "Edit", textColor: Colors.white),
+                        ButtonWidget(bgcolor: Colors.white, text: "Edit", textColor: Colors.black),
                       ]
                     )
                   );
