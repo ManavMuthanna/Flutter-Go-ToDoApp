@@ -17,4 +17,12 @@ class DataService extends GetConnect implements GetxService{
       );
     return response;
   }
-}
+
+  Future<Response> getTask(String id) async {
+    print("in service $id");
+    Response response = await get(
+      "http://10.0.2.2:3000/api/task/$id",
+    );
+    return response;
+  }
+  }
