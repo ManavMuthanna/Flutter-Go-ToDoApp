@@ -1,44 +1,35 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:app/services/service.dart';
+import 'package:get/get.dart';
 
-class DataModel {
-  final int id;
-  final String name;
-  final String details;
-  final int created;
+class DataController extends GetxController {
+  DataService service = DataService();
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
 
-  DataModel({
-    required this.id,
-    required this.name,
-    required this.details,
-    required this.created,
-  });
+  List<dynamic> _myData = [];
+  List<dynamic> get myData => _myData;
 
-  factory DataModel.fromJson(Map<String, dynamic> json) {
-    return DataModel(
-      id: json['ID'],
-      name: json['TaskName'],
-      details: json['TaskDetail'],
-      created: json['Created'],
-    );
+  Future<void> getTasks() async {
+    _isLoading = true;
+    Response response = await service.getTasks();
+    if (response.statusCode == 200) {
+      _myData = response.body;
+      update();
+      print("Succesfully Fetched Tasks!");
+    } else {
+      print("Failed!");
+    }
+  }
+
+  Future<void> pushTasks(String task, String taskDetail) async {
+    _isLoading = true;
+    Response response =
+        await service.pushTask({"TaskName": task, "TaskDetail": taskDetail});
+    if (response.statusCode == 200) {
+      update();
+      print("Succesfully Created Task!");
+    } else {
+      print("Failed!");
+    }
   }
 }
-
-Future<List<DataModel>> fetchData() async {
-    final uri = Uri.parse("http://10.0.2.2:3000/api/tasks");
-    final response = await http.get(uri);
-
-    if (response.statusCode == 200) {
-      final List<dynamic> jsonResponse = json.decode(response.body);
-      final List<DataModel> dataList = jsonResponse
-          .map((data) => DataModel.fromJson(data))
-          .toList();
-      return dataList;
-    } else {
-      throw Exception("Failed to Fetch Data");
-    }
-}
-
-
-
-

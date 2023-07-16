@@ -1,3 +1,4 @@
+import 'package:app/controllers/data_controller.dart';
 import 'package:app/widgets/button_widget.dart';
 import 'package:app/widgets/task_widget.dart';
 import 'package:flutter/material.dart';
@@ -5,10 +6,18 @@ import 'package:get/get.dart';
 
 class AllTask extends StatelessWidget {
   const AllTask({super.key});
+  
+  loadData() async {
+    await Get.find<DataController>().getTasks();
+  }
 
   @override
   Widget build(BuildContext context) {
-    List myData = ["Try harder", "Try Smarter"];
+    loadData();
+    final controller = Get.find<DataController>();
+    List<dynamic> response = controller.myData;
+    List<String> myData = response.map((data) => data['TaskName'] as String).toList();
+    print(myData);
     
     final leftEditIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
