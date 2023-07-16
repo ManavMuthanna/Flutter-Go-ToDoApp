@@ -1,5 +1,4 @@
 import 'package:app/services/service.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class DataController extends GetxController {
@@ -51,11 +50,9 @@ Future<void> getTask(String id) async {
   print("in cont $id");
   Response response = await service.getTask(id);
   if (response.statusCode == 200) {
-    if(kDebugMode){
       _singleTask = response.body;
       // print(_singleTask);
       print("Successfully Fetched Task!");
-    }
   } else {
     print("Failed!");
   }
