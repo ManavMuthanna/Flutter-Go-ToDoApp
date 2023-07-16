@@ -46,5 +46,5 @@ func main() {
 	//Delete a Task
 	router.DELETE("/api/task/:id", controller.DeleteTask)
 
-	router.Run("localhost:3000")
+	router.Run("0.0.0.0:3000")
 }
