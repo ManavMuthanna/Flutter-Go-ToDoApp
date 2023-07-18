@@ -1,5 +1,6 @@
 import 'package:app/controllers/data_controller.dart';
 import 'package:app/screens/all_task.dart';
+import 'package:app/screens/home_screen.dart';
 import 'package:app/widgets/button_widget.dart';
 import 'package:app/widgets/error_warning_ms.dart';
 import 'package:app/widgets/textfield_widget.dart';
@@ -13,7 +14,7 @@ class AddTask extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
     TextEditingController detailController = TextEditingController();
-    bool _dataValidation() {
+    bool dataValidation() {
       if (nameController.text.trim() == '') {
         Message.taskErrorOrWarning("Task Name", "Task name is empty!");
         return false;
@@ -47,7 +48,7 @@ class AddTask extends StatelessWidget {
                 const SizedBox(height: 60),
                 IconButton(
                     onPressed: () {
-                      Get.back();
+                       Get.to(()=>const HomeScreen(), transition: Transition.fadeIn, duration: const Duration(seconds: 1));
                     },
                     icon: Icon(
                       Icons.arrow_back,
@@ -75,7 +76,7 @@ class AddTask extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: (){
-                    if(_dataValidation()){
+                    if(dataValidation()){
                       Get.find<DataController>().pushTasks(nameController.text, detailController.text);
                       Get.to(() => const AllTask(),
                       transition: Transition.circularReveal);

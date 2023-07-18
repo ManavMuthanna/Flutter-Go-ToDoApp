@@ -1,6 +1,7 @@
 import 'package:app/controllers/data_controller.dart';
 import 'package:app/screens/add_task.dart';
 import 'package:app/screens/edit_task.dart';
+import 'package:app/screens/home_screen.dart';
 import 'package:app/screens/view_task.dart';
 import 'package:app/widgets/button_widget.dart';
 import 'package:app/widgets/loading.dart';
@@ -43,6 +44,14 @@ class _AllTaskState extends State<AllTask> {
     loadState = true;
   }
 
+    Future<void> deleteData(String id) async {
+    var controller = Get.find<DataController>();
+    await controller.deleteTask(id);
+    //update UI
+    setState(() {});
+    loadState = true;
+  }
+
   //fix the error below
   @override
   Widget build(BuildContext context){
@@ -77,7 +86,7 @@ class _AllTaskState extends State<AllTask> {
                 alignment: Alignment.topLeft,
                 child: IconButton(
                     onPressed: () {
-                      Get.back();
+                      Get.to(()=>const HomeScreen(), transition: Transition.fadeIn, duration: const Duration(seconds: 1));
                     },
                     icon: Icon(
                       Icons.arrow_back,
@@ -100,7 +109,7 @@ class _AllTaskState extends State<AllTask> {
                             color: Colors.black),
                         child: InkWell(
                           onTap: (){
-                            Get.to(()=>const AddTask(), transition: Transition.fade, duration: const Duration(seconds: 1));
+                            Get.to(()=>const AddTask(), transition: Transition.circularReveal, duration: const Duration(seconds: 1));
                           },
                           child: const Icon(
                             Icons.add,
@@ -171,8 +180,13 @@ class _AllTaskState extends State<AllTask> {
                                 });
                             return false;
                           } else {
-                            return Future.delayed(const Duration(seconds: 1),
-                                () => direction == DismissDirection.endToStart);
+                            String parseID = idList[index].toString();
+                            await deleteData(parseID);
+                            loadState = false;
+                            const LoadingPage();
+                            await loadData();
+                             // Assuming you have a deleteTask function that takes the task ID
+                            return true; // Indicate that the dismiss action is confirmed
                           }
                         },
                         key: ObjectKey(index),
@@ -188,6 +202,7 @@ class _AllTaskState extends State<AllTask> {
           )),
           onRefresh: () async {
             loadState = false;
+            const LoadingPage();
             await loadData();
           },
         );

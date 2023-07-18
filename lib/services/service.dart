@@ -3,16 +3,18 @@ import 'package:get/get.dart';
 
 class DataService extends GetConnect implements GetxService{
 
+  String baseUri = "http://10.0.2.2:3000";
+
   Future<Response> getTasks() async{
     Response response = await get(
-      "http://10.0.2.2:3000/api/tasks",
+      "$baseUri/api/tasks",
       );
     return response;
   }
 
     Future<Response> pushTask(dynamic body) async{  
     Response response = await post(
-      "http://10.0.2.2:3000/api/create-task",
+      "$baseUri/api/create-task",
       body,
       );
     return response;
@@ -20,7 +22,7 @@ class DataService extends GetConnect implements GetxService{
 
     Future<Response> editTask(String id, dynamic body) async{  
     Response response = await patch(
-      "http://10.0.2.2:3000/api/task/$id",
+      "$baseUri/api/task/$id",
       body,
       );
     return response;
@@ -29,7 +31,14 @@ class DataService extends GetConnect implements GetxService{
   Future<Response> getTask(String id) async {
     print("in service $id");
     Response response = await get(
-      "http://10.0.2.2:3000/api/task/$id",
+      "$baseUri/api/task/$id",
+    );
+    return response;
+  }
+
+    Future<Response> deleteTask(String id) async {
+    Response response = await delete(
+      "$baseUri/api/task/$id",
     );
     return response;
   }

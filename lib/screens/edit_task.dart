@@ -39,7 +39,7 @@ class _EditTaskState extends State<EditTask> {
 
   @override
   Widget build(BuildContext context) {
-    bool _dataValidation() {
+    bool dataValidation() {
       if (nameController.text.trim() == '') {
         Message.taskErrorOrWarning("Task Name", "Task name is empty!");
         return false;
@@ -101,7 +101,7 @@ class _EditTaskState extends State<EditTask> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      if (_dataValidation()) {
+                      if (dataValidation()) {
                         Get.find<DataController>().editTask(taskID, nameController.text, detailController.text);
                         Get.to(() => const AllTask(),
                             transition: Transition.circularReveal);

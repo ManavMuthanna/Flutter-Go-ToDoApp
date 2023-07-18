@@ -77,5 +77,17 @@ Future<void> editTask(String id, String task, String taskDetail) async {
   update();
 }
 
+Future<void> deleteTask(String id) async {
+  _isLoading = true;
+  Response response = await service.deleteTask(id);
+  if (response.statusCode == 200) {
+      print("Successfully Deleted Task!");
+  } else {
+    print("Failed!");
+  }
+
+  _isLoading = false;
+  update();
+}
 }
 
