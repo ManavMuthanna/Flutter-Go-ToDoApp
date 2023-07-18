@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class DataService extends GetConnect implements GetxService{
 
-  String baseUri = "http://10.0.2.2:3000";
+  String baseUri = "https://taskmanager-backend-gr7lmdgx6q-el.a.run.app";
 
   Future<Response> getTasks() async{
     Response response = await get(
