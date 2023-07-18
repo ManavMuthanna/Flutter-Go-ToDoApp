@@ -38,8 +38,6 @@ class _AllTaskState extends State<AllTask> {
         response.map((data) => data['ID'] as int).toList();
     tasks = idList.length.toString();
     //update UI
-    print(idList);
-    print(myData);
     setState(() {});
     loadState = true;
   }

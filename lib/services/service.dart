@@ -29,7 +29,6 @@ class DataService extends GetConnect implements GetxService{
   }
 
   Future<Response> getTask(String id) async {
-    print("in service $id");
     Response response = await get(
       "$baseUri/api/task/$id",
     );

@@ -19,9 +19,7 @@ class DataController extends GetxController {
     Response response = await service.getTasks();
     if (response.statusCode == 200) {
       _myData = response.body;
-      print("Successfully Fetched Tasks!");
     } else {
-      print("Failed!");
     }
 
     _isLoading = false;
@@ -35,9 +33,7 @@ class DataController extends GetxController {
     Response response =
         await service.pushTask({"TaskName": task, "TaskDetail": taskDetail});
     if (response.statusCode == 200) {
-      print("Successfully Created Task!");
     } else {
-      print("Failed!");
     }
 
     _isLoading = false;
@@ -46,15 +42,10 @@ class DataController extends GetxController {
 
 Future<void> getTask(String id) async {
   _isLoading = true;
-
-  print("in cont $id");
   Response response = await service.getTask(id);
   if (response.statusCode == 200) {
       _singleTask = response.body;
-      // print(_singleTask);
-      print("Successfully Fetched Task!");
   } else {
-    print("Failed!");
   }
 
   _isLoading = false;
@@ -68,9 +59,7 @@ Future<void> editTask(String id, String task, String taskDetail) async {
   Response response =
       await service.editTask(id, {"TaskName": task, "TaskDetail": taskDetail});
   if (response.statusCode == 200) {
-    print("Successfully Edited Task!");
   } else {
-    print("Failed!");
   }
 
   _isLoading = false;
@@ -81,9 +70,7 @@ Future<void> deleteTask(String id) async {
   _isLoading = true;
   Response response = await service.deleteTask(id);
   if (response.statusCode == 200) {
-      print("Successfully Deleted Task!");
   } else {
-    print("Failed!");
   }
 
   _isLoading = false;

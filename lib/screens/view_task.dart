@@ -27,7 +27,6 @@ class _ViewTaskState extends State<ViewTask> {
   }
 
   Future<void> loadSingleTask(String id) async {
-    print("in view $id");
     var controller = Get.find<DataController>();
     await controller.getTask(id);
     taskName = controller.singleTask['TaskName'];
