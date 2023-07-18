@@ -87,7 +87,7 @@ class AddTask extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height / 6)
+            SizedBox(height: MediaQuery.of(context).size.height / 14)
           ]),
     ));
   }

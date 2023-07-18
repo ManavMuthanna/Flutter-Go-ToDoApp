@@ -20,6 +20,7 @@ class DataController extends GetxController {
     if (response.statusCode == 200) {
       _myData = response.body;
     } else {
+      
     }
 
     _isLoading = false;

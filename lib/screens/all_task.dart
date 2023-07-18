@@ -137,7 +137,7 @@ class _AllTaskState extends State<AllTask> {
                         confirmDismiss: (DismissDirection direction) async {
                           if (direction == DismissDirection.startToEnd) {
                             showModalBottomSheet(
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: Colors.purple.shade300,
                                 barrierColor: Colors.transparent,
                                 context: context,
                                 builder: (_) {
