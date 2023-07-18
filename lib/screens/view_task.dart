@@ -1,4 +1,5 @@
 import 'package:app/controllers/data_controller.dart';
+import 'package:app/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -131,17 +132,7 @@ Widget build(BuildContext context) {
       ),
     );
     }else{
-      return Container(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        width: double.maxFinite,
-        height: 400,
-        child: const Center(
-          child: LinearProgressIndicator(
-            color: Colors.purple,
-            value: 0.50,
-          ),
-        ),
-      );
+      return const LoadingPage();
     }
-    }
+}
 }

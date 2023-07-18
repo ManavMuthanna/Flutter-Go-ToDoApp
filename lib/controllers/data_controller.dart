@@ -60,4 +60,22 @@ Future<void> getTask(String id) async {
   _isLoading = false;
   update();
 }
+
+Future<void> editTask(String id, String task, String taskDetail) async {
+  update(); // Update the state before setting _isLoading to true
+  _isLoading = true;
+
+  Response response =
+      await service.editTask(id, {"TaskName": task, "TaskDetail": taskDetail});
+  if (response.statusCode == 200) {
+    print("Successfully Edited Task!");
+  } else {
+    print("Failed!");
+  }
+
+  _isLoading = false;
+  update();
 }
+
+}
+

@@ -18,6 +18,14 @@ class DataService extends GetConnect implements GetxService{
     return response;
   }
 
+    Future<Response> editTask(String id, dynamic body) async{  
+    Response response = await patch(
+      "http://10.0.2.2:3000/api/task/$id",
+      body,
+      );
+    return response;
+  }
+
   Future<Response> getTask(String id) async {
     print("in service $id");
     Response response = await get(
